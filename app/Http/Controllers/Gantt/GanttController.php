@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Gantt;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Tarea;
 // use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -43,6 +44,8 @@ class GanttController extends Controller{
       //   {"id": "tmp_3", "name": "Stakeholder"},
       //   {"id": "tmp_4", "name": "Customer"}
       // ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"};
+        $tareas = Tarea::get();
+        dd($tareas);
         $ret = ['ok' => true,
         'project' => [
           'tasks'  =>  [
