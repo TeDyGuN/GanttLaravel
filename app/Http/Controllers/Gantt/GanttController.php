@@ -2,7 +2,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Tarea;
-// use App\User;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
@@ -45,11 +45,11 @@ class GanttController extends Controller{
       //   {"id": "tmp_4", "name": "Customer"}
       // ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"};
         $tareas = Tarea::get();
-        dd($tareas);
+        $users = User::get();
         $ret = ['ok' => true,
         'project' => [
           'tasks'  =>  [
-          ['id'=> -1, 'name'=> 'Pablo', 'progress'=> 40, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 0, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 20, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
+          ['id'=> -1, 'name'=> 'Pablo', 'progress'=> 40, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> 'MR', 'level'=> 0, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 20, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
           ['id'=> -2, 'name'=> 'Niurka', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 1, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 10, 'end'=> 1398203999999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
           ['id'=> -3, 'name'=> 'gantt part', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 2, 'end'=> 1397167199999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
           ['id'=> -4, 'name'=> 'editor part', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '3', 'canWrite'=> true, 'start'=> 1397167200000, 'duration'=> 4, 'end'=> 1397685599999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
@@ -71,6 +71,28 @@ class GanttController extends Controller{
           ['id'=> 'tmp_4', 'name'=> 'Customer']
         ], 'canWrite'=>    true, 'canDelete'=>true, 'canWriteOnParent'=> true, 'zoom'=> 'w3']
        ];
+
+        $h = ['ok' => true];
+        $p = [];
+        $pp = [];
+        foreach ($tareas as $t) {
+          $i = ['id' => $t->id, 'progress' => $t->progress, 'name' => $t->name, 'progressByWorklog' => false, 'relevance' => 0, 'type' => '', 'typeId' => '',
+          'description' => $t->description, 'code' => $t->code, 'level' => $t->level, 'status' => $t->status, 'depends' => $t->depends, 'canWrite' => true, 'start'=> $t->start,
+          'duration'=>$t->duration, 'end'=> $t->end, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true];
+          //$h = $this->array_push_assoc($h, 'id', $t->id);
+          array_push($p, $i);
+        }
+        foreach ($users as $u) {
+          $i = ['id' => $u->id, 'name' => $u->name];
+          //$h = $this->array_push_assoc($h, 'id', $t->id);
+          array_push($pp, $i);
+        }
+        $h['project'] = ['tasks' => $p, 'selectedRow' => 2, 'deletedTaskIds' => [], 'resource' => $pp];
+        dd($h);
         return response()->json($ret);
+    }
+    public function array_push_assoc($array, $key, $value){
+      $array[$key] = $value;
+      return $array;
     }
 }
