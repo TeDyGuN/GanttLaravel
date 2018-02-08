@@ -46,39 +46,39 @@ class GanttController extends Controller{
       // ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"};
         $tareas = Tarea::get();
         $users = User::get();
-        $ret = ['ok' => true,
-        'project' => [
-          'tasks'  =>  [
-          ['id'=> -1, 'name'=> 'Pablo', 'progress'=> 40, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> 'MR', 'level'=> 0, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 20, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
-          ['id'=> -2, 'name'=> 'Niurka', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 1, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 10, 'end'=> 1398203999999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
-          ['id'=> -3, 'name'=> 'gantt part', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 2, 'end'=> 1397167199999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
-          ['id'=> -4, 'name'=> 'editor part', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '3', 'canWrite'=> true, 'start'=> 1397167200000, 'duration'=> 4, 'end'=> 1397685599999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
-          ['id'=> -5, 'name'=> 'testing', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 1, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '2=>5', 'canWrite'=> true, 'start'=> 1398981600000, 'duration'=> 5, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
-          ['id'=> -6, 'name'=> 'test on safari', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '', 'canWrite'=> true, 'start'=> 1398981600000, 'duration'=> 2, 'end'=> 1399327199999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
-          ['id'=> -7, 'name'=> 'test on ie', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '6', 'canWrite'=> true, 'start'=> 1399327200000, 'duration'=> 3, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
-          ['id'=> -8, 'name'=> 'Asopotamadre', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '6', 'canWrite'=> true, 'start'=> 1399327200000, 'duration'=> 2, 'end'=> 1399499999999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false]
-        ], 'selectedRow'=> 2, 'deletedTaskIds'=> [],
-          'resources'=> [
-          ['id'=> 'tmp_1', 'name'=> 'Resource 1'],
-          ['id'=> 'tmp_2', 'name'=> 'Resource 2'],
-          ['id'=> 'tmp_3', 'name'=> 'Resource 3'],
-          ['id'=> 'tmp_4', 'name'=> 'Resource 4']
-        ],
-          'roles'=>       [
-          ['id'=> 'tmp_1', 'name'=> 'Project Manager'],
-          ['id'=> 'tmp_2', 'name'=> 'Worker'],
-          ['id'=> 'tmp_3', 'name'=> 'Stakeholder'],
-          ['id'=> 'tmp_4', 'name'=> 'Customer']
-        ], 'canWrite'=>    true, 'canDelete'=>true, 'canWriteOnParent'=> true, 'zoom'=> 'w3']
-       ];
+       //  $ret = ['ok' => true,
+       //  'project' => [
+       //    'tasks'  =>  [
+       //    ['id'=> -1, 'name'=> 'Pablo', 'progress'=> 40, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> 'MR', 'level'=> 0, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 20, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
+       //    ['id'=> -2, 'name'=> 'Niurka', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 1, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 10, 'end'=> 1398203999999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
+       //    ['id'=> -3, 'name'=> 'gantt part', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_ACTIVE', 'depends'=> '', 'canWrite'=> true, 'start'=> 1396994400000, 'duration'=> 2, 'end'=> 1397167199999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
+       //    ['id'=> -4, 'name'=> 'editor part', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '3', 'canWrite'=> true, 'start'=> 1397167200000, 'duration'=> 4, 'end'=> 1397685599999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
+       //    ['id'=> -5, 'name'=> 'testing', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 1, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '2=>5', 'canWrite'=> true, 'start'=> 1398981600000, 'duration'=> 5, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true],
+       //    ['id'=> -6, 'name'=> 'test on safari', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '', 'canWrite'=> true, 'start'=> 1398981600000, 'duration'=> 2, 'end'=> 1399327199999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
+       //    ['id'=> -7, 'name'=> 'test on ie', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '6', 'canWrite'=> true, 'start'=> 1399327200000, 'duration'=> 3, 'end'=> 1399586399999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false],
+       //    ['id'=> -8, 'name'=> 'Asopotamadre', 'progress'=> 0, 'progressByWorklog'=> false, 'relevance'=> 0, 'type'=> '', 'typeId'=> '', 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED', 'depends'=> '6', 'canWrite'=> true, 'start'=> 1399327200000, 'duration'=> 2, 'end'=> 1399499999999, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> false]
+       //  ], 'selectedRow'=> 2, 'deletedTaskIds'=> [],
+       //    'resources'=> [
+       //    ['id'=> 'tmp_1', 'name'=> 'Resource 1'],
+       //    ['id'=> 'tmp_2', 'name'=> 'Resource 2'],
+       //    ['id'=> 'tmp_3', 'name'=> 'Resource 3'],
+       //    ['id'=> 'tmp_4', 'name'=> 'Resource 4']
+       //  ],
+       //    'roles'=>       [
+       //    ['id'=> 'tmp_1', 'name'=> 'Project Manager'],
+       //    ['id'=> 'tmp_2', 'name'=> 'Worker'],
+       //    ['id'=> 'tmp_3', 'name'=> 'Stakeholder'],
+       //    ['id'=> 'tmp_4', 'name'=> 'Customer']
+       //  ], 'canWrite'=>    true, 'canDelete'=>true, 'canWriteOnParent'=> true, 'zoom'=> 'w3']
+       // ];
 
-        $h = ['ok' => true];
+        $ret = ['ok' => true];
         $p = [];
         $pp = [];
         foreach ($tareas as $t) {
           $i = ['id' => $t->id, 'progress' => $t->progress, 'name' => $t->name, 'progressByWorklog' => false, 'relevance' => 0, 'type' => '', 'typeId' => '',
           'description' => $t->description, 'code' => $t->code, 'level' => $t->level, 'status' => $t->status, 'depends' => $t->depends, 'canWrite' => true, 'start'=> $t->start,
-          'duration'=>$t->duration, 'end'=> $t->end, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true];
+          'duration'=> $duracion = $t->duration, 'end'=> $t->end, 'startIsMilestone'=> false, 'endIsMilestone'=> false, 'collapsed'=> false, 'assigs'=> [], 'hasChild'=> true];
           //$h = $this->array_push_assoc($h, 'id', $t->id);
           array_push($p, $i);
         }
@@ -87,12 +87,21 @@ class GanttController extends Controller{
           //$h = $this->array_push_assoc($h, 'id', $t->id);
           array_push($pp, $i);
         }
-        $h['project'] = ['tasks' => $p, 'selectedRow' => 2, 'deletedTaskIds' => [], 'resource' => $pp];
-        dd($h);
+        //USUARIOS POR DEFECTO
+        $rr = [['id' => "tmp_1", 'name' => "Resource 1"],
+                ['id' => "tmp_2", 'name' => "Resource 2"]];
+        $roles = [['id' => '1', 'name' => 'Director Ejecutivo'],
+                  ['id' => '2', 'name' => 'Coordinador de Programa']];
+        $ret['project'] = ['tasks' => $p, 'selectedRow' => 2, 'deletedTaskIds' => [], 'resources' => $rr, 'roles' => $roles,
+      "canWrite" => true, "canDelete" => true, "canWriteOnParent" => true, "zoom" => "w3"];
+        //dd($h);
         return response()->json($ret);
     }
-    public function array_push_assoc($array, $key, $value){
-      $array[$key] = $value;
-      return $array;
+    public function saveGantt(Request $request){
+      //dd($request);
+      ///$ret = ['ok' => true, 'project' => $request];
+      return $request->tasks;
+      //return response()->json($ret);
+      //return response()->json(['message' => 'This is get method', 'ok' => true, 'project' => $request]);
     }
 }

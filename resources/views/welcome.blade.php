@@ -127,11 +127,12 @@ function loadGanttFromServer() {
 
   var url =  "{{ url('json') }}";
   $.getJSON(url, function(response) {
-    console.log(response);
+    //console.log(response);
     //console.debug(response);
     if (response.ok) {
-      var project = response.project;
-      console.log(project);
+      //var project = response.project;
+      //console.log(project);
+      var project = removesquotes(response.project);
       if (!project.canWrite)
         $(".ganttButtonBar button.requireWrite").attr("disabled","true");
       ge.loadProject(project);
@@ -161,56 +162,81 @@ function loadGanttFromServer() {
   // });
 }
 
-
+function removesquotes(p){
+  var project = p;
+  Object.keys(project.tasks).forEach(function(va){
+    project.tasks[va].end = parseInt(project.tasks[va].end);
+    project.tasks[va].start = parseInt(project.tasks[va].start);
+  });
+  return project;
+}
 function saveGanttOnServer() {
 
   //this is a simulation: save data to the local storage or to the textarea
-  saveInLocalStorage();
+  //saveInLocalStorage();
 
-  /*
+
   var prj = ge.saveProject();
 
-  delete prj.resources;
-  delete prj.roles;
-
-  var prof = new Profiler("saveServerSide");
-  prof.reset();
+  // delete prj.resources;
+  // delete prj.roles;
+  //
+  // var prof = new Profiler("saveServerSide");
+  // prof.reset();
 
   if (ge.deletedTaskIds.length>0) {
     if (!confirm("TASK_THAT_WILL_BE_REMOVED\n"+ge.deletedTaskIds.length)) {
       return;
     }
   }
+  console.log(prj);
+  var url =  "{{ route('saveGantt') }}";
+  $.post( url, prj, function(data) {
+    console.log(data);
+      alert( "success" );
+    })
+      .done(function() {
+        alert( "second success" );
+      })
+      .fail(function() {
+        alert( "error" );
+      })
+      .always(function() {
+        alert( "finished" );
+    });
 
-  $.ajax("ganttAjaxController.jsp", {
-    dataType:"json",
-    data: {CM:"SVPROJECT",prj:JSON.stringify(prj)},
-    type:"POST",
+  // $.ajax(url, {
+  //   method:"POST",
+  //   dataType:"json",
+  //   cache: false,
+  //   processData: false,
+  //   data: prj,
+  //
+  //   success: function(response) {
+  //     if (response.ok) {
+  //       console.log(response);
+  //       //prof.stop();
+  //       // if (response.project) {
+  //       //   ge.loadProject(response.project); //must reload as "tmp_" ids are now the good ones
+  //       // } else {
+  //       //   ge.reset();
+  //       // }
+  //     } else {
+  //       var errMsg="Errors saving project\n";
+  //       if (response.message) {
+  //         errMsg=errMsg+response.message+"\n";
+  //       }
+  //
+  //       if (response.errorMessages.length) {
+  //         errMsg += response.errorMessages.join("\n");
+  //       }
+  //
+  //       alert(errMsg);
+  //     }
+  //   }
+  //
+  // });
 
-    success: function(response) {
-      if (response.ok) {
-        prof.stop();
-        if (response.project) {
-          ge.loadProject(response.project); //must reload as "tmp_" ids are now the good ones
-        } else {
-          ge.reset();
-        }
-      } else {
-        var errMsg="Errors saving project\n";
-        if (response.message) {
-          errMsg=errMsg+response.message+"\n";
-        }
-
-        if (response.errorMessages.length) {
-          errMsg += response.errorMessages.join("\n");
-        }
-
-        alert(errMsg);
-      }
-    }
-
-  });
-  */
 }
 
 function newProject(){

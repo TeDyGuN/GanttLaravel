@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/json', 'Gantt\GanttController@getGantt');
+Route::post('/saveGantt', 'Gantt\GanttController@saveGantt')->name('saveGantt');
