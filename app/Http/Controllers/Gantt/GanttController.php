@@ -44,7 +44,7 @@ class GanttController extends Controller{
       //   {"id": "tmp_3", "name": "Stakeholder"},
       //   {"id": "tmp_4", "name": "Customer"}
       // ], "canWrite":    true, "canDelete":true, "canWriteOnParent": true, "zoom": "w3"};
-        $tareas = Tarea::get();
+
         $users = User::get();
        //  $ret = ['ok' => true,
        //  'project' => [
@@ -71,7 +71,9 @@ class GanttController extends Controller{
        //    ['id'=> 'tmp_4', 'name'=> 'Customer']
        //  ], 'canWrite'=>    true, 'canDelete'=>true, 'canWriteOnParent'=> true, 'zoom'=> 'w3']
        // ];
-
+        $id_proyecto = '1';
+        $tareas = Tarea::where('id_proyecto', $id_proyecto)
+                ->get();
         $ret = ['ok' => true];
         $p = [];
         $pp = [];
@@ -87,20 +89,42 @@ class GanttController extends Controller{
           //$h = $this->array_push_assoc($h, 'id', $t->id);
           array_push($pp, $i);
         }
+
         //USUARIOS POR DEFECTO
         $rr = [['id' => "tmp_1", 'name' => "Resource 1"],
                 ['id' => "tmp_2", 'name' => "Resource 2"]];
         $roles = [['id' => '1', 'name' => 'Director Ejecutivo'],
                   ['id' => '2', 'name' => 'Coordinador de Programa']];
         $ret['project'] = ['tasks' => $p, 'selectedRow' => 2, 'deletedTaskIds' => [], 'resources' => $rr, 'roles' => $roles,
-      "canWrite" => true, "canDelete" => true, "canWriteOnParent" => true, "zoom" => "w3"];
+      "canWrite" => true, "canDelete" => true, "canWriteOnParent" => true, "zoom" => "w3", 'id_proyecto' => $id_proyecto];
         //dd($h);
         return response()->json($ret);
     }
     public function saveGantt(Request $request){
-      //dd($request);
-      ///$ret = ['ok' => true, 'project' => $request];
-      return $request->tasks;
+
+      $id = $request->id_proyecto;
+      // $tareas = Tarea::where('id_proyecto', $id)
+      //           ->get();
+      // foreach ($tareas as $t) {
+      //   $t->delete();
+      // }
+      $tasks = $request->tasks;
+      // foreach ($tasks as $t) {
+      //   $tarea = new Tarea();
+      //   $tarea->name = $t->name;
+      //   $tarea->progress = $t->progress;
+      //   $tarea->description = $t->description;
+      //   $tarea->code = $t->code;
+      //   $tarea->level = $t->level;
+      //   $tarea->status = $t->status;
+      //   $tarea->depends = $t->depends;
+      //   $tarea->start = $t->start;
+      //   $tarea->end = $t->end;
+      //   $tarea->duration = $t->duration;
+      //   $tarea->id_proyecto = $id;
+      //   $tarea->save();
+      // }
+      return 'ok';
       //return response()->json($ret);
       //return response()->json(['message' => 'This is get method', 'ok' => true, 'project' => $request]);
     }

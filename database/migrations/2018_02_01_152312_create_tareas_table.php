@@ -27,6 +27,8 @@ class CreateTareasTable extends Migration
             $table->string('start');
             $table->string('end');
             $table->string('duration');
+            $table->integer('id_proyecto')->unsigned();
+            $table->foreign('id_proyecto')->references('id')->on('proyectos')->onDelete('Cascade');
             $table->timestamps();
         });
     }

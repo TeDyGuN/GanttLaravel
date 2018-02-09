@@ -133,11 +133,12 @@ function loadGanttFromServer() {
       //var project = response.project;
       //console.log(project);
       var project = removesquotes(response.project);
+      //console.log(project);
       if (!project.canWrite)
         $(".ganttButtonBar button.requireWrite").attr("disabled","true");
       ge.loadProject(project);
       ge.checkpoint();
-
+      ge['id_proyecto'] = project['id_proyecto'];
       ge.editor.element.oneTime(100, "cl", function () {$(this).find("tr.emptyRow:first").click()});
       if (typeof(callback)=="function") {
         callback(response);
@@ -171,13 +172,13 @@ function removesquotes(p){
   return project;
 }
 function saveGanttOnServer() {
-
+  //console.log(this.ge);
   //this is a simulation: save data to the local storage or to the textarea
   //saveInLocalStorage();
 
 
   var prj = ge.saveProject();
-
+  prj['id_proyecto'] = this.ge['id_proyecto'];
   // delete prj.resources;
   // delete prj.roles;
   //
@@ -189,7 +190,7 @@ function saveGanttOnServer() {
       return;
     }
   }
-  console.log(prj);
+  //console.log(prj);
   var url =  "{{ route('saveGantt') }}";
   $.post( url, prj, function(data) {
     console.log(data);

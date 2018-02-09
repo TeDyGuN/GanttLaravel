@@ -16,6 +16,9 @@ class CreateProyectosTable extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('canWrite');
+            $table->string('zoom');
+            $table->string('canWriteOnParent');
             $table->timestamps();
         });
     }

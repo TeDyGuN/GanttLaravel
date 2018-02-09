@@ -23,23 +23,26 @@ class TareaTableSeeder extends Seeder
       $table->string('end');
       $table->string('duration');
       */
+      DB::table('proyectos')->insert([
+        ['nombre'=> 'MR', 'canWrite'=> 'true', 'zoom'=> 'w3', 'canWriteOnParent'=> 'true']
+      ]);
       DB::table('tareas')->insert([
         ['name'=> 'Pablo', 'progress'=> 40, 'description'=> '', 'code'=> '', 'level'=> 0, 'status'=> 'STATUS_ACTIVE',
-        'depends' => '', 'start'=> 1396994400000, 'duration'=> 20, 'end'=> 1399586399999],
+        'depends' => '', 'start'=> 1396994400000, 'duration'=> 20, 'end'=> 1399586399999, 'id_proyecto' => '1'],
         ['name'=> 'Niurka', 'progress'=> 0, 'description'=> '', 'code'=> '', 'level'=> 1, 'status'=> 'STATUS_ACTIVE',
-        'depends'=> '', 'start'=> 1396994400000, 'duration'=> 10, 'end'=> 1398203999999],
+        'depends'=> '', 'start'=> 1396994400000, 'duration'=> 10, 'end'=> 1398203999999, 'id_proyecto' => '1'],
         ['name'=> 'gantt part', 'progress'=> 0, 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_ACTIVE',
-        'depends'=> '', 'start'=> 1396994400000, 'duration'=> 2, 'end'=> 1397167199999],
+        'depends'=> '', 'start'=> 1396994400000, 'duration'=> 2, 'end'=> 1397167199999, 'id_proyecto' => '1'],
         ['name'=> 'editor part', 'progress'=> 0, 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED',
-        'depends'=> '3', 'start'=> 1397167200000, 'duration'=> 4, 'end'=> 1397685599999],
+        'depends'=> '3', 'start'=> 1397167200000, 'duration'=> 4, 'end'=> 1397685599999, 'id_proyecto' => '1'],
         ['name'=> 'testing', 'progress'=> 0, 'description'=> '', 'code'=> '', 'level'=> 1, 'status'=> 'STATUS_SUSPENDED',
-        'depends'=> '2=>5', 'start'=> 1398981600000, 'duration'=> 5, 'end'=> 1399586399999],
+        'depends'=> '2=>5', 'start'=> 1398981600000, 'duration'=> 5, 'end'=> 1399586399999, 'id_proyecto' => '1'],
         ['name'=> 'test on safari', 'progress'=> 0, 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED',
-         'depends'=> '', 'start'=> 1398981600000, 'duration'=> 2, 'end'=> 1399327199999],
+         'depends'=> '', 'start'=> 1398981600000, 'duration'=> 2, 'end'=> 1399327199999, 'id_proyecto' => '1'],
         ['name'=> 'test on ie', 'progress'=> 0, 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED',
-        'depends'=> '6', 'start'=> 1399327200000, 'duration'=> 3, 'end'=> 1399586399999],
+        'depends'=> '6', 'start'=> 1399327200000, 'duration'=> 3, 'end'=> 1399586399999, 'id_proyecto' => '1'],
         ['name'=> 'Asopotamadre', 'progress'=> 0, 'description'=> '', 'code'=> '', 'level'=> 2, 'status'=> 'STATUS_SUSPENDED',
-        'depends'=> '6', 'start'=> 1399327200000, 'duration'=> 2, 'end'=> 1399499999999]
+        'depends'=> '6', 'start'=> 1399327200000, 'duration'=> 2, 'end'=> 1399499999999, 'id_proyecto' => '1']
       ]);
 
 
