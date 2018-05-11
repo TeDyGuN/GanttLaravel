@@ -103,27 +103,36 @@ class GanttController extends Controller{
     public function saveGantt(Request $request){
 
       $id = $request->id_proyecto;
-      // $tareas = Tarea::where('id_proyecto', $id)
-      //           ->get();
-      // foreach ($tareas as $t) {
-      //   $t->delete();
-      // }
+
+      $tareas = Tarea::where('id_proyecto', $id)
+                ->get();
+      foreach ($tareas as $t) {
+        $t->delete();
+      }
       $tasks = $request->tasks;
-      // foreach ($tasks as $t) {
-      //   $tarea = new Tarea();
-      //   $tarea->name = $t->name;
-      //   $tarea->progress = $t->progress;
-      //   $tarea->description = $t->description;
-      //   $tarea->code = $t->code;
-      //   $tarea->level = $t->level;
-      //   $tarea->status = $t->status;
-      //   $tarea->depends = $t->depends;
-      //   $tarea->start = $t->start;
-      //   $tarea->end = $t->end;
-      //   $tarea->duration = $t->duration;
-      //   $tarea->id_proyecto = $id;
-      //   $tarea->save();
-      // }
+      foreach ($tasks as $t) {
+
+        try {
+          $tarea = new Tarea();
+          $tarea->name = $t['name'];
+          $tarea->progress = $t['progress'];
+          $tarea->description = $t['description'];
+          $tarea->code = $t['code'];
+          $tarea->level = $t['level'];
+          $tarea->status = $t['status'];
+          $tarea->depends = $t['depends'];
+          $tarea->start = $t['start'];
+          $tarea->end = $t['end'];
+          $tarea->duration = $t['duration'];
+          $tarea->id_proyecto = $id;
+          $tarea->save();
+            } catch (\Illuminate\Database\QueryException $exception) {
+
+            return $exception;
+          }
+      }
+
+
       return 'ok';
       //return response()->json($ret);
       //return response()->json(['message' => 'This is get method', 'ok' => true, 'project' => $request]);

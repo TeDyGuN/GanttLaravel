@@ -17,16 +17,16 @@ class CreateTareasTable extends Migration
 
         Schema::create('tareas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('progress');
-            $table->string('description');
-            $table->string('code');
-            $table->integer('level');
+            $table->string('name')->nullable();
+            $table->string('progress')->nullable();
+            $table->string('description')->nullable();
+            $table->string('code')->nullable();
+            $table->string('level')->nullable();
             $table->enum('status', ['STATUS_ACTIVE', 'STATUS_DONE', 'STATUS_FAILED', 'STATUS_SUSPENDED', 'STATUS_UNDEFINED']);
-            $table->string('depends');
-            $table->string('start');
-            $table->string('end');
-            $table->string('duration');
+            $table->string('depends')->nullable();
+            $table->string('start')->nullable();
+            $table->string('end')->nullable();
+            $table->string('duration')->nullable();
             $table->integer('id_proyecto')->unsigned();
             $table->foreign('id_proyecto')->references('id')->on('proyectos')->onDelete('Cascade');
             $table->timestamps();

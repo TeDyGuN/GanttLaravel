@@ -45,9 +45,10 @@ body{
 .gdfColHeader {
   min-width: 5px;
   height: 30px;
-  background-color: #eee;
+  background-color: #0b417b;
   border-bottom:2px solid #bbb;
   border-right: 1px solid #bbb;
+  color: white;
 }
 
 .gdfColHeader:last-of-type {
@@ -233,6 +234,7 @@ body{
 }
 
 .ganttButtonBar{
+  background-color: #efefef;
   position:relative;
   z-index: 2;
   /*background-color: #fff;*/
